@@ -10,7 +10,7 @@ Nettside for EFS med tjenestepresentasjon og scrollstyrte arkitektillustrasjoner
 - `assets/`: illustrasjoner og logoer
 
 Siden er statisk og trenger ingen bygging. Publiser mappen med `index.html` som startside.
-Kontakt: kontakt@efs.no.
+Kontakt: Eivind Hübert Skajaa, daglig leder / konsulent. E-post: eivind@skajaa.no. Telefon: +47 913 24 677.
 
 Illustrasjonene er AI-genererte prinsippskisser, ikke godkjente prosjekttegninger.
 Logoene tilhører de respektive selskapene.

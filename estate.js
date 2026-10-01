@@ -33,7 +33,12 @@ function update(){
 function schedule(){if(!queued){queued=true;requestAnimationFrame(update)}}
 addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);motionPreference.addEventListener('change',schedule);update();
 if(!motionPreference.matches){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.section-heading,.services-intro,.service-group,.process-grid,.experience,.logo-row').forEach(el=>{el.classList.add('reveal');io.observe(el)});}
-document.querySelector('.copy').addEventListener('click',async()=>{const status=document.querySelector('#copy-status');try{await navigator.clipboard.writeText('kontakt@efs.no');status.textContent='E-postadressen er kopiert.'}catch{status.textContent='E-postadresse: kontakt@efs.no'}});
+document.querySelector('.copy').addEventListener('click',async()=>{
+ const status=document.querySelector('#copy-status');
+ const address=document.querySelector('.consultant-email').href.slice('mailto:'.length);
+ try{await navigator.clipboard.writeText(address);status.textContent='E-postadressen er kopiert.'}
+ catch{status.textContent='E-postadresse: '+address;}
+});
 
 // A native horizontal list: readable without JavaScript, controllable with touch and keyboard.
 const projectViewport=document.querySelector('.project-viewport');
