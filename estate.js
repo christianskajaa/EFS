@@ -56,7 +56,8 @@ if(projectViewport){
  const original=track.querySelector('.project-set');
  const duplicate=original.cloneNode(true);
  duplicate.setAttribute('aria-hidden','true');
- duplicate.inert=true;
+ // Keep the looping copy clickable, with keyboard navigation on the original list only.
+ duplicate.querySelectorAll('a,button,[tabindex]').forEach(element=>element.tabIndex=-1);
  track.append(duplicate);
  const controls=document.querySelector('.project-controls');
  const showcase=document.querySelector('.project-showcase');
@@ -87,7 +88,7 @@ if(projectViewport){
   else{cancelAnimationFrame(frame);frame=0;lastTime=0;}
  }
  function pause(){paused=true;sync();}
- toggle.addEventListener('click',()=>{paused=!paused;sync();});
+ toggle.addEventListener('click',()=>{paused=!paused;if(!paused)focused=false;sync();});
  for(const [selector,direction] of [['.project-prev',-1],['.project-next',1]]){
   controls.querySelector(selector).addEventListener('click',()=>{
    pause();
