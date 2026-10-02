@@ -19,8 +19,7 @@
 
 /* Scrollstyrt merking følger det samme 3:2-formatet som plantegningen. */
 .drawing-frame{aspect-ratio:1.5}.story-chapter{min-height:78vh}
-.drawing-annotations,.common-area-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.common-area-fill{fill:#b8bc83;fill-opacity:.38;stroke:none}
+.drawing-annotations{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .plan-label{position:absolute;display:flex;align-items:center;gap:7px;left:25.4%;top:30.5%;transform:translate(-50%,-50%);padding:8px 12px;border:1px solid #a7bdc9;border-radius:5px;background:#fffdf8f5;color:#302435;font:600 16px/1.2 Arial,sans-serif;white-space:nowrap;box-shadow:0 3px 12px #30243517}
 .plan-label i{width:9px;height:9px;border-radius:50%;background:#9cbdcf;flex-shrink:0}
 .plan-label-two{left:76.6%;border-color:#d4b59d}.plan-label-two i{background:#d5a987}
@@ -28,8 +27,7 @@
 .plan-label-four{left:76.6%;top:66.5%;border-color:#b8a6c6}.plan-label-four i{background:#b29bc5}
 .plan-label-common{left:50%;top:50%;padding:4px 10px;border-color:#aaad78;background:#f5f5dc;font-size:14px;box-shadow:none}
 .has-scroll-labels .plan-label{opacity:var(--label-reveal,0);transform:translate(-50%,-50%) translateY(var(--label-rise,6px))}
-.has-scroll-labels .common-area-overlay{opacity:var(--common-reveal,0)}
 @media(max-width:1100px){.plan-label{font-size:13px;padding:6px 9px;gap:5px}.plan-label-common{font-size:12px;padding:3px 8px}}
 @media(max-width:760px){.story-chapter{min-height:62vh}.drawing-frame{aspect-ratio:1.5}.plan-label{font-size:12px;padding:5px 7px;gap:4px}.plan-label i{width:6px;height:6px}.plan-label-common{font-size:11px;padding:2px 7px}}
 @media(max-width:370px){.plan-label{font-size:11px;padding:4px 6px}.plan-label-common{font-size:10px;padding:2px 6px}}
-@media(prefers-reduced-motion:reduce){.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}.has-scroll-labels .common-area-overlay{opacity:1}}
+@media(prefers-reduced-motion:reduce){.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}}

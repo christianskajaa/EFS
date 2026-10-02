@@ -32,7 +32,6 @@ function update(){
  // Complete the colour reveal before adding either pair of section labels.
  color.style.clipPath=`inset(0 ${100-clamp((p-.08)/.32)*100}% 0 0)`;
  for(const label of planLabels){const reveal=ease(clamp((p-Number(label.dataset.revealAt))/.08));label.style.setProperty('--label-reveal',String(reveal));label.style.setProperty('--label-rise',`${(1-reveal)*6}px`);}
- stage.style.setProperty('--common-reveal',String(ease(clamp((p-.83)/.08))));
  progressbar.style.width=`${p*100}%`;
  if(!reduced){
  const hp=clamp(-document.querySelector('.hero').getBoundingClientRect().top/innerHeight);
