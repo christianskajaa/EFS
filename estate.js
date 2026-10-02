@@ -7,8 +7,7 @@ const drawingSteps=[
  {at:.04,label:'Seksjonsgrenser',title:'Vi tegner opp seksjonene.'},
  {at:.52,label:'Arealfordeling',title:'Arealene får sin egen farge.'},
  {at:.73,label:'Seksjon 1 og 2',title:'De første seksjonene blir tydelige.'},
- {at:.83,label:'Seksjon 3 og 4',title:'Fire seksjoner. Tydelig tilhørighet.'},
- {at:.93,label:'Fellesareal',title:'Gangen binder seksjonene sammen.'}
+ {at:.83,label:'Seksjon 3, 4 og fellesareal',title:'Fire seksjoner. Fellesarealet binder dem sammen.'}
 ];
 const color=document.querySelector('.drawing-color');
 const planLabels=[...document.querySelectorAll('.plan-label')];
@@ -115,37 +114,24 @@ if(projectViewport){
  sync();
 }
 
-// Progressive navigation: the original header remains the source of the scroll threshold.
+// One persistent header; preserve the compact menu and its focus/scroll handling.
 (()=>{
  const root=document.documentElement;
  const header=document.querySelector('.header');
- const floating=document.querySelector('.floating-header');
  const dialog=document.querySelector('#site-menu');
  const panel=dialog?.querySelector('.menu-panel');
  const openers=[...document.querySelectorAll('[data-menu-open]')];
- if(!header||!floating||!dialog||!panel||typeof dialog.showModal!=='function')return;
- let opener=null,scrollLock=null,navTarget=null,frame=0,backdropPressed=false;
+ if(!header||!dialog||!panel||typeof dialog.showModal!=='function')return;
+ let opener=null,scrollLock=null,navTarget=null,backdropPressed=false;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const saveStyles=(element,names)=>names.map(name=>[name,element.style.getPropertyValue(name),element.style.getPropertyPriority(name)]);
  const restoreStyles=(element,saved)=>saved.forEach(([name,value,priority])=>{if(value)element.style.setProperty(name,value,priority);else element.style.removeProperty(name);});
- function syncFloating(){
-  frame=0;
-  // A fixed body changes element coordinates; retain the current state while the menu is open.
-  if(scrollLock)return;
-  const visible=header.getBoundingClientRect().bottom<=0;
-  if(!visible&&floating.contains(document.activeElement)){
-   const original=header.querySelector('[data-menu-open]');
-   original?.focus({preventScroll:true});
-  }
-  floating.inert=!visible;
-  floating.setAttribute('aria-hidden',String(!visible));
-  floating.classList.toggle('is-visible',visible);
- }
- function scheduleFloating(){if(!frame)frame=requestAnimationFrame(syncFloating);}
  function lockScroll(){
   const body=document.body;
   const scrollbar=innerWidth-root.clientWidth;
-  scrollLock={x:scrollX,y:scrollY,body:saveStyles(body,['position','top','left','width','overflow','padding-right']),root:saveStyles(root,['overflow','scroll-behavior'])};
+  scrollLock={x:scrollX,y:scrollY,body:saveStyles(body,['position','top','left','width','overflow','padding-right']),root:saveStyles(root,['overflow','scroll-behavior','--menu-scrollbar','--menu-header-width'])};
+  root.style.setProperty('--menu-scrollbar',`${scrollbar}px`);
+  root.style.setProperty('--menu-header-width',`${header.getBoundingClientRect().width}px`);
   if(scrollbar>0)body.style.setProperty('padding-right',`${parseFloat(getComputedStyle(body).paddingRight)+scrollbar}px`,'important');
   body.style.setProperty('position','fixed','important');
   body.style.setProperty('top',`${-scrollLock.y}px`,'important');
@@ -164,7 +150,6 @@ if(projectViewport){
   window.scrollTo({left:saved.x,top:saved.y,behavior:'instant'});
   restoreStyles(root,saved.root.filter(([name])=>name==='scroll-behavior'));
   scrollLock=null;
-  syncFloating();
  }
  function focusTarget(target){
   const temporary=!target.hasAttribute('tabindex');
@@ -217,9 +202,7 @@ if(projectViewport){
    focusTarget(destination.element);
    destination.element.scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'start'});
   }else{
-   let returnTo=opener;
-   if(returnTo&&floating.contains(returnTo)&&floating.inert)returnTo=header.querySelector('[data-menu-open]');
-   if(returnTo?.isConnected)returnTo.focus({preventScroll:true});
+   if(opener?.isConnected)opener.focus({preventScroll:true});
   }
   opener=null;
  });
@@ -241,13 +224,4 @@ if(projectViewport){
   navTarget={hash,element};
   closeMenu();
  }));
- floating.inert=true;
- floating.setAttribute('aria-hidden','true');
- floating.hidden=false;
- root.classList.add('has-floating-nav');
- addEventListener('scroll',scheduleFloating,{passive:true});
- addEventListener('resize',scheduleFloating);
- addEventListener('pageshow',scheduleFloating);
- if(typeof ResizeObserver==='function')new ResizeObserver(scheduleFloating).observe(header);
- syncFloating();
 })();
