@@ -1,6 +1,8 @@
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const story=document.querySelector('.story-layout');
 const stage=document.querySelector('.drawing-stage');
+const fixedHeader=document.querySelector('.header');
+const headerNavigation=fixedHeader?.querySelector('nav');
 const chapters=[...document.querySelectorAll('.story-chapter')];
 const drawingSteps=[
  {at:0,label:'Tegningsgrunnlag',title:'Et godt grunnlag.'},
@@ -19,6 +21,15 @@ const ease=x=>x*x*(3-2*x);
 stage.classList.add('has-scroll-labels');
 let queued=false,active=-1,activeStep=-1;
 function update(){
+ // Let the three text links scroll out naturally; keep EFS and the action buttons fixed.
+ // Opening the dialog temporarily fixes the body, so preserve the link position until it closes.
+ if(headerNavigation&&!document.documentElement.classList.contains('menu-open')){
+  const offset=Math.min(Math.max(scrollY,0),fixedHeader.offsetHeight);
+  headerNavigation.style.setProperty('--nav-scroll',`${offset}px`);
+  const hidden=headerNavigation.offsetHeight===0||offset>=headerNavigation.offsetTop+headerNavigation.offsetHeight;
+  headerNavigation.inert=hidden;
+  headerNavigation.setAttribute('aria-hidden',String(hidden));
+ }
  const mobile=innerWidth<=760;
  const stageStyle=mobile?getComputedStyle(stage):null;
  const stickyStage=mobile&&stageStyle.position==='sticky';
