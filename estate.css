@@ -18,7 +18,7 @@
 @media(max-width:520px){.consultant-card{grid-template-columns:1fr;gap:25px;padding-top:28px}.consultant-portrait{width:200px;max-width:65%}.consultant-portrait img{aspect-ratio:4/5}.consultant-details h3{font-size:33px;max-width:none}.contact p.consultant-bio{font-size:16px;max-width:none}.consultant-methods a{font-size:19px}.consultant-actions .button{min-height:48px;font-size:15px}.consultant-actions .copy{padding:10px 0;margin-top:10px}.consultant-methods{gap:17px}}
 
 /* Grenser og tekst følger plantegningens 1536 x 1024-koordinater. */
-.drawing-frame{aspect-ratio:1.5;--plan-red:#c5232b}.story-chapter{min-height:78vh}
+.drawing-frame{aspect-ratio:1.5;--plan-red:#c5232b}.story-copy{padding-bottom:clamp(180px,30vh,300px)}.story-chapter{min-height:78vh}
 .drawing-annotations,.plan-boundaries{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .plan-boundary{fill:none;stroke:var(--plan-red);stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
 .has-scroll-labels .plan-boundary{stroke-dasharray:1;stroke-dashoffset:var(--boundary-offset,1)}
@@ -27,9 +27,9 @@
 .plan-label-common{left:50%;top:50%;font-size:16px}
 .has-scroll-labels .plan-label{opacity:var(--label-reveal,0);transform:translate(-50%,-50%) translateY(var(--label-rise,6px))}
 @media(max-width:1100px){.plan-label{font-size:16px}.plan-label-common{font-size:14px}}
-@media(max-width:760px){.story-chapter{min-height:62vh}.plan-boundary{stroke-width:1.7}.plan-label{font-size:14px}.plan-label-common{font-size:12px}}
+@media(max-width:760px){.story-copy{padding-bottom:0}.story-chapter{min-height:62vh}.plan-boundary{stroke-width:1.7}.plan-label{font-size:14px}.plan-label-common{font-size:12px}}
 @media(max-width:370px){.plan-label{font-size:12px}.plan-label-common{font-size:11px}}
-@media(prefers-reduced-motion:reduce){.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}.has-scroll-labels .plan-boundary{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.story-copy{padding-bottom:0}.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}.has-scroll-labels .plan-boundary{stroke-dashoffset:0}}
 
 /* Prosjektbilder og tydelige lenker i referansekarusellen. */
 .project-card-photo{width:350px;padding:0;min-height:0}
