@@ -17,20 +17,19 @@
 @media(max-width:900px){.contact-profile-layout{grid-template-columns:1fr;gap:36px}.contact-intro>p:not(.eyebrow){max-width:550px}.consultant-card{grid-template-columns:190px minmax(0,1fr);padding:30px 0 0;border-left:0;border-top:1px solid #69536c;gap:30px}.consultant-details{max-width:500px}.consultant-details h3{font-size:34px}}
 @media(max-width:520px){.consultant-card{grid-template-columns:1fr;gap:25px;padding-top:28px}.consultant-portrait{width:200px;max-width:65%}.consultant-portrait img{aspect-ratio:4/5}.consultant-details h3{font-size:33px;max-width:none}.contact p.consultant-bio{font-size:16px;max-width:none}.consultant-methods a{font-size:19px}.consultant-actions .button{min-height:48px;font-size:15px}.consultant-actions .copy{padding:10px 0;margin-top:10px}.consultant-methods{gap:17px}}
 
-/* Scrollstyrt merking følger det samme 3:2-formatet som plantegningen. */
-.drawing-frame{aspect-ratio:1.5}.story-chapter{min-height:78vh}
-.drawing-annotations{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.plan-label{position:absolute;display:flex;align-items:center;gap:7px;left:25.4%;top:30.5%;transform:translate(-50%,-50%);padding:8px 12px;border:1px solid #a7bdc9;border-radius:5px;background:#fffdf8f5;color:#302435;font:600 16px/1.2 Arial,sans-serif;white-space:nowrap;box-shadow:0 3px 12px #30243517}
-.plan-label i{width:9px;height:9px;border-radius:50%;background:#9cbdcf;flex-shrink:0}
-.plan-label-two{left:76.6%;border-color:#d4b59d}.plan-label-two i{background:#d5a987}
-.plan-label-three{top:66.5%;border-color:#aaba98}.plan-label-three i{background:#9eaf87}
-.plan-label-four{left:76.6%;top:66.5%;border-color:#b8a6c6}.plan-label-four i{background:#b29bc5}
-.plan-label-common{left:50%;top:50%;padding:4px 10px;border-color:#aaad78;background:#f5f5dc;font-size:14px;box-shadow:none}
+/* Grenser og tekst følger plantegningens 1536 x 1024-koordinater. */
+.drawing-frame{aspect-ratio:1.5;--plan-red:#c5232b}.story-chapter{min-height:78vh}
+.drawing-annotations,.plan-boundaries{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.plan-boundary{fill:none;stroke:var(--plan-red);stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
+.has-scroll-labels .plan-boundary{stroke-dasharray:1;stroke-dashoffset:var(--boundary-offset,1)}
+.plan-label{position:absolute;left:25.4%;top:30.5%;transform:translate(-50%,-50%);color:var(--plan-red);font:800 18px/1.1 Arial,sans-serif;white-space:nowrap}
+.plan-label-two{left:76.6%}.plan-label-three{top:66.5%}.plan-label-four{left:76.6%;top:66.5%}
+.plan-label-common{left:50%;top:50%;font-size:16px}
 .has-scroll-labels .plan-label{opacity:var(--label-reveal,0);transform:translate(-50%,-50%) translateY(var(--label-rise,6px))}
-@media(max-width:1100px){.plan-label{font-size:13px;padding:6px 9px;gap:5px}.plan-label-common{font-size:12px;padding:3px 8px}}
-@media(max-width:760px){.story-chapter{min-height:62vh}.drawing-frame{aspect-ratio:1.5}.plan-label{font-size:12px;padding:5px 7px;gap:4px}.plan-label i{width:6px;height:6px}.plan-label-common{font-size:11px;padding:2px 7px}}
-@media(max-width:370px){.plan-label{font-size:11px;padding:4px 6px}.plan-label-common{font-size:10px;padding:2px 6px}}
-@media(prefers-reduced-motion:reduce){.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}}
+@media(max-width:1100px){.plan-label{font-size:16px}.plan-label-common{font-size:14px}}
+@media(max-width:760px){.story-chapter{min-height:62vh}.plan-boundary{stroke-width:1.7}.plan-label{font-size:14px}.plan-label-common{font-size:12px}}
+@media(max-width:370px){.plan-label{font-size:12px}.plan-label-common{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.story-chapter{min-height:0}.has-scroll-labels .plan-label{opacity:1;transform:translate(-50%,-50%)}.has-scroll-labels .plan-boundary{stroke-dashoffset:0}}
 
 /* Prosjektbilder og tydelige lenker i referansekarusellen. */
 .project-card-photo{width:350px;padding:0;min-height:0}

@@ -4,13 +4,15 @@ const stage=document.querySelector('.drawing-stage');
 const chapters=[...document.querySelectorAll('.story-chapter')];
 const drawingSteps=[
  {at:0,label:'Tegningsgrunnlag',title:'Et godt grunnlag.'},
- {at:.08,label:'Arealfordeling',title:'Arealene får sin egen farge.'},
- {at:.46,label:'Seksjon 1 og 2',title:'De første seksjonene blir tydelige.'},
- {at:.65,label:'Seksjon 3 og 4',title:'Fire seksjoner. Tydelig tilhørighet.'},
- {at:.83,label:'Fellesareal',title:'Gangen binder seksjonene sammen.'}
+ {at:.04,label:'Seksjonsgrenser',title:'Vi tegner opp seksjonene.'},
+ {at:.52,label:'Arealfordeling',title:'Arealene får sin egen farge.'},
+ {at:.73,label:'Seksjon 1 og 2',title:'De første seksjonene blir tydelige.'},
+ {at:.83,label:'Seksjon 3 og 4',title:'Fire seksjoner. Tydelig tilhørighet.'},
+ {at:.93,label:'Fellesareal',title:'Gangen binder seksjonene sammen.'}
 ];
 const color=document.querySelector('.drawing-color');
 const planLabels=[...document.querySelectorAll('.plan-label')];
+const planBoundaries=[...document.querySelectorAll('.plan-boundary')];
 const progressbar=document.querySelector('.drawing-progress i');
 const hero=document.querySelector('.hero-image img');
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
@@ -30,10 +32,11 @@ function update(){
  const reduced=motionPreference.matches;
  const p=reduced?1:clamp((line-(first.top+first.height*.3))/((last.top+last.height*.7)-(first.top+first.height*.3)));
  const step=drawingSteps.findLastIndex(item=>p>=item.at);
- if(step!==activeStep){activeStep=step;document.querySelector('#drawing-title').textContent=drawingSteps[step].title;document.querySelector('#drawing-counter').textContent=`0${step+1} / 05`;document.querySelector('#drawing-label').textContent=drawingSteps[step].label;}
- // Complete the colour reveal before adding either pair of section labels.
- color.style.clipPath=`inset(0 ${100-clamp((p-.08)/.32)*100}% 0 0)`;
- for(const label of planLabels){const reveal=ease(clamp((p-Number(label.dataset.revealAt))/.08));label.style.setProperty('--label-reveal',String(reveal));label.style.setProperty('--label-rise',`${(1-reveal)*6}px`);}
+ if(step!==activeStep){activeStep=step;document.querySelector('#drawing-title').textContent=drawingSteps[step].title;document.querySelector('#drawing-counter').textContent=`0${step+1} / 0${drawingSteps.length}`;document.querySelector('#drawing-label').textContent=drawingSteps[step].label;}
+ // Trace the boundaries first, then reveal colour, and finally label each section.
+ for(const boundary of planBoundaries){const drawn=clamp((p-Number(boundary.dataset.drawAt))/Number(boundary.dataset.drawDuration));boundary.style.setProperty('--boundary-offset',String(1-drawn));}
+ color.style.clipPath=`inset(0 ${100-clamp((p-.52)/.18)*100}% 0 0)`;
+ for(const label of planLabels){const reveal=ease(clamp((p-Number(label.dataset.revealAt))/.05));label.style.setProperty('--label-reveal',String(reveal));label.style.setProperty('--label-rise',`${(1-reveal)*6}px`);}
  progressbar.style.width=`${p*100}%`;
  if(!reduced){
  const hp=clamp(-document.querySelector('.hero').getBoundingClientRect().top/innerHeight);
