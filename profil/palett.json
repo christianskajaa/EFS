@@ -1,0 +1,9 @@
+{
+  "version": "2026-10-05-logo-02",
+  "intended_main": "#0B3F70",
+  "raster_main_sample": "#0B457A",
+  "raster_room_sample": "#B7DAE9",
+  "raster_suffix_sample": "#6691B3",
+  "white": "#FFFFFF",
+  "note": "Raster samples are approximate. The unchanged selected PNG is the visual reference; no Pantone/CMYK match or font file has been established."
+}

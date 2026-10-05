@@ -1,0 +1,23 @@
+EFS.no – valgt logo 02 Kraftigere blå
+Valgt av brukeren: 2026-10-05.
+Verktøy: innebygd imagegen (image_gen.imagegen), ikke CLI.
+Referanse: 2026-10-05-efs-no-varianter/02-lys-blagra-no.png
+Output: 2026-10-05-efs-no-dypere-bla/02-kraftigere-bla.png
+Originalens SHA-256 står i manifest.json.
+
+Eksakt genereringsprompt for valgt original:
+
+Use case: precise-object-edit / logo-brand.
+Edit the supplied EFS.no logo board with a SELECTIVE DARK-COLOUR CHANGE ONLY. This exact reference is the chosen design. The user likes all existing LIGHT BLUE and wants the DARK portions to look more blue, deeper and more powerful.
+
+KEEP EVERY LIGHT-BLUE ELEMENT UNCHANGED. In particular preserve the original pale icy-blue LEFT room fill and the muted light blue-grey lowercase ".no" suffix in the large wordmark. Keep the original pale blue suffix in the reversed-colour sample. Do NOT darken, recolour or resize ".no". Do not alter its lowercase spelling, approximately 40% relative visual height, serif style, dot or baseline.
+Keep uppercase EFS and the company name exactly sized and positioned as in the reference, with the same high-contrast serif EFS and clean sans-serif subtitle. Exact text: "EFS.no" and "Eiendomsforvaltning Sør AS", preserving Norwegian ø and existing two-line company name.
+Change only original DARK CHARCOAL elements to the specific new deep blue below: EFS letters in the main logo, company-name letters in the main logo, all dark architectural emblem outlines and dashed linework in the large and small standalone marks, and the original dark rectangle background of the reversed sample. In the reverse sample preserve white EFS/subtitle/outline linework and the unchanged pale-blue room and suffix. The purpose is a stronger dark BLUE identity with the existing soft light-blue accents.
+Preserve exactly the emblem's geometry: two separate upper L-shaped sections, pale-blue left and white right, one hinged plan door between them, dashed terrace extension at upper right, short vertical dashed connectors, and the big open white lower floorplate. No line-thickness changes, no moving rooms, no merged plates, no simplification, no new door.
+Preserve the original white landscape 3:2 concept-board layout, large primary lockup above, standalone mark below left and reversed small lockup below right, same dividers, whitespace and margins. Flat crisp logo art. No new captions, labels, numbers, watermark, gradients, shadows, texture or mockups.
+New DARK colour for this one version: #0B3F70, a confident saturated deep ink blue, visibly more BLUE than the original dark charcoal and stronger in chroma than the midnight version. Professional restrained blue, not bright electric blue. Keep the room fill and .no accent precisely unchanged.
+
+Produksjonstilpasning:
+Original-PNG er kopiert uendret. SVG-filene avgrenser presentasjonsbildet med viewBox og inneholder det opprinnelige rasterbildet. De er ikke vektorisert eller transparente logooriginaler. Nettsiden laster samme PNG én gang og viser den gjennom SVG-visninger. Mobilvarianten setter originalens symbol og EFS.no-ordmerke ved siden av hverandre uten undertittel. Hvit flate blandes med bakgrunnen gjennom CSS mix-blend-mode:multiply.
+Et nytt forsøk med imagegen på transparent uttrekk ble vurdert og forkastet fordi blåfargen endret seg. Det er ikke brukt på nettsiden eller i denne leveransen.
+

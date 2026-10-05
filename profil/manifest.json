@@ -1,0 +1,19 @@
+{
+  "selected": "02-kraftigere-bla",
+  "date": "2026-10-05",
+  "company": "Eiendomsforvaltning Sør AS",
+  "wordmark": "EFS.no",
+  "source": "../assets/efs-logo-02-original.png",
+  "source_sha256": "372cbf925d7b34eb1d4b6f973115ee13aeb0892f452176e3f98c316732f16cf4",
+  "source_dimensions": [
+    1536,
+    1024
+  ],
+  "assets": {
+    "logo-hoved.svg": "Raster-backed SVG viewport of exact primary logo",
+    "logo-symbol.svg": "Raster-backed SVG viewport of exact symbol",
+    "logo-mobil.svg": "Responsive symbol and wordmark arrangement using original pixels",
+    "logo-negativ.svg": "Raster-backed SVG viewport of original reversed sample"
+  },
+  "previous_site_commit": "39c6ce24eb141164670f9c013ebc0fba54d99d66"
+}
