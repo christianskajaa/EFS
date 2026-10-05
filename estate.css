@@ -102,3 +102,40 @@ html{scroll-padding-top:100px}
 
 @media(max-width:760px) and (max-height:560px){.drawing-stage{position:relative;top:auto}}
 @media(prefers-reduced-motion:reduce){.menu-icon i{transition:none}#site-menu[open]{animation:none}.drawing-stage{position:relative;top:auto}}
+
+/* Valgt EFS.no-logo 02. SVG-visningene avgrenser det uendrede originalbildet. */
+.brand-logo{display:flex;align-items:center;gap:0;flex-shrink:0}
+.efs-logo{display:block;width:100%;height:auto;overflow:hidden;mix-blend-mode:multiply}
+.efs-logo-mobile{display:none}
+.header .brand-logo{width:256px;padding:10px 12px;border-radius:24px}
+.header{height:114px}
+body{padding-top:114px}
+html{scroll-padding-top:116px}
+.drawing-stage{top:112px}
+.menu-brand.brand-logo{width:210px;max-width:calc(100% - 56px);min-width:0;flex-shrink:1;letter-spacing:0}
+.footer .brand-logo{width:270px;max-width:100%}
+@media(max-width:760px){
+ .header{height:100px}
+ .header .brand-logo{width:214px;padding:9px 11px}
+ body{padding-top:100px}
+ html{scroll-padding-top:102px}
+ .drawing-stage{top:98px}
+ .footer .brand-logo{width:250px}
+}
+@media(max-width:520px){
+ .header{height:88px;gap:10px}
+ .header .brand-logo{width:143px;padding:9px 8px}
+ .header .efs-logo-full{display:none}
+ .header .efs-logo-mobile{display:block}
+ body{padding-top:88px}
+ html{scroll-padding-top:92px}
+ .drawing-stage{top:86px}
+}
+@media(max-width:390px){.header .brand-logo{width:122px}.header{gap:8px}}
+@media(max-width:360px){
+ .header .brand-logo{width:96px;padding:8px 6px}
+ .header-actions .button{font-size:12px;padding-inline:10px}
+ .header-actions .menu-toggle{font-size:12px;padding-inline:9px;gap:7px}
+}
+@media(max-width:760px) and (max-height:560px){.drawing-stage{position:relative;top:auto}}
+@media(prefers-reduced-motion:reduce){.drawing-stage{top:auto}}
